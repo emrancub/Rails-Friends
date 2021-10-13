@@ -1,0 +1,27 @@
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>About</th>
+    <th>Gender</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.about %></td>
+      <td><%= user.gender %></td>
+<!--      <td><%#= link_to 'Add Friend', new_friend_path, class:"btn btn-warning"%></td>-->
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+

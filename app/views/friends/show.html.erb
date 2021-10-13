@@ -1,0 +1,10 @@
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading"><%= @friend.first_name %> <%= @friend.last_name %></h4>
+  <p><%= @friend.email %> |  <%= @friend.phone_number %></p>
+  <hr>
+  <p class="mb-0">
+    <%= link_to 'Edit', edit_friend_path(@friend), class:"btn btn-dark" %> |
+    <%= link_to 'Back', friends_path, class:"btn btn-warning" %>
+  </p>
+</div>
+

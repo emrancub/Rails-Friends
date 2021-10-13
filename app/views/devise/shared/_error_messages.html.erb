@@ -1,0 +1,16 @@
+<% if resource.errors.any? %>
+  <% resource.errors.each do |error| %>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <%= error.full_message %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  <% end %>
+<% end %>
+
+<% flash.each do |key, value| %>
+  <% content_tag :div, value, class: "flash #{key}" %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <%= value %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<h2>Update Password</h2>
+
+<%# flash.each do |key, value| %>
+  <%#= content_tag :div, value, class: "flash #{key}" %>
+<%# end %>
+
+<%= form_for(current_user, url: update_password_users_path(), html: { method: :post }) do |f| %>
+  <%#= render "devise/shared/error_messages", resource: resource %>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
