@@ -1,27 +1,31 @@
 <table class="table table-striped table-hover table-bordered">
   <thead class="table-dark">
-  <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>About</th>
-    <th>Gender</th>
-  </tr>
-  </thead>
+      <tr>
+        <th>Name</th>
+        <th>About</th>
+        <th>Gender</th>
+      </tr>
+      </thead>
 
-  <tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.id %></td>
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.about %></td>
-      <td><%= user.gender %></td>
-<!--      <td><%#= link_to 'Add Friend', new_friend_path, class:"btn btn-warning"%></td>-->
-    </tr>
-  <% end %>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+          <td><%= user.about %></td>
+          <td><%= user.gender %></td>
+          <td>
+            <% if is_requested?(@current_user.id, user.id) %>
+              <td><%= link_to 'Requested', show_friends_users_path, class:"btn btn-warning"%></td>
+            <% else %>
+              <td><%= link_to 'Add Friend', friendship_friend_requests_path(user_id: user.id), class:"btn btn-warning"%></td>
+            <% end %>
+          </td>
+          <td>
+            <% if is_connect?(user.id, @current_user.id) %>
+            <td><%= link_to 'Want to Connect', show_friends_users_path, class:"btn btn-warning"%></td>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
   </tbody>
 </table>
-
-
-

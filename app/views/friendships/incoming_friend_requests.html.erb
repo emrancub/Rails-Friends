@@ -1,0 +1,22 @@
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>About</th>
+        <th>Gender</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @friend_ship.each do |friend| %>
+        <tr>
+          <td><%= friend.name %></td>
+          <td><%= friend.about %></td>
+          <td><%= friend.gender %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+
+
+

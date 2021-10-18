@@ -50,10 +50,6 @@ class FriendsController < ApplicationController
     end
   end
 
-  def correct_user
-    @friend = current_user.friends.find_by(id: params[:id])
-    redirect_to friends_path, notice: "Not Authontication User" if @friend.nil?
-  end
   # DELETE /friends/1 or /friends/1.json
   def destroy
     @friend.destroy
@@ -62,6 +58,21 @@ class FriendsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def correct_user
+    @friend = current_user.friends.find_by(id: params[:id])
+    redirect_to friends_path, notice: "You are Not Authenticate User" if @friend.nil?
+  end
+
+  # def friend_request
+  #   friend = User.find(6)
+  #
+  #   @friend_ship = Friendship.new(requester_id: current_user.id, addressee_id: friend.id)
+  #   p ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.."
+  #   p @friend_ship.save
+  #
+  #   p Friendship.where(requester_id: current_user.id)
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
