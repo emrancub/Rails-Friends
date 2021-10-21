@@ -13,19 +13,42 @@
           <td><%= user.name %></td>
           <td><%= user.about %></td>
           <td><%= user.gender %></td>
+
           <td>
             <% if is_requested?(@current_user.id, user.id) %>
               <td><%= link_to 'Requested', show_friends_users_path, class:"btn btn-warning"%></td>
-            <% else %>
+            <% elsif is_friend?(@current_user.id, user.id)%>
+              <td><%= link_to "Accepted", show_friends_users_path, class:"btn btn-warning" %></td>
+          <% elsif is_connect?(user.id, @current_user.id) %>
+            <td><%= link_to 'Confirm', accept_friend_request_path(id: user.id), class:"btn btn-warning"%></td>
+          <% else %>
               <td><%= link_to 'Add Friend', friendship_friend_requests_path(user_id: user.id), class:"btn btn-warning"%></td>
             <% end %>
           </td>
-          <td>
-            <% if is_connect?(user.id, @current_user.id) %>
-            <td><%= link_to 'Want to Connect', show_friends_users_path, class:"btn btn-warning"%></td>
-            <% end %>
-          </td>
+
+<!--          <td>-->
+            <%# if is_connect?(user.id, @current_user.id) %>
+<!--              <td><%#= link_to 'Want to Connect', show_friends_users_path, class:"btn btn-warning"%></td>-->
+            <%# end %>
+<!--          </td>-->
+
+<!--          <td>/</td>-->
+<!--          <td>-->
+            <%# if signed_in? && !Friendship.reacted?(current_user.id, user.id) && current_user!= user %>
+<!--              <td> <%#= link_to 'Send Invitation',friendships_create_path(ids: {id1: current_user.id, id2: user.id})%></td>-->
+            <%# end %>
+<!--          </td>-->
         </tr>
       <% end %>
   </tbody>
 </table>
+
+<h3>Your Friends</h3>
+<ul>
+<!--  @users = User.where.not(id: current_user)-->
+  <% @users.each do |user| %>
+    <% if is_friend?(current_user.id, user.id) %>
+      <li><%= user.name %></li>
+    <% end %>
+  <% end %>
+</ul>

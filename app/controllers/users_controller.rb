@@ -17,7 +17,6 @@ class UsersController < ApplicationController
 
   def user_show
 
-
   end
 
   def user_update
@@ -35,8 +34,8 @@ class UsersController < ApplicationController
 
   def show_friends
     # @users = User.all
-    @current_user = current_user
-    @myrequest = @current_user.requester_friendships
+    # @current_user = current_user
+    # @myrequest = @current_user.requester_friendships
     # p ">>>>>>>>>>>>>>>>>>>>>>>>>>>"
     # p @myrequest
     @users = User.where.not(id: current_user)

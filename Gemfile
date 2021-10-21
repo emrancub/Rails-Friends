@@ -21,11 +21,13 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
 gem 'devise', '~> 4.8'
+# gem 'has_friendship', '~> 1.1', '>= 1.1.8'
 # gem 'has_friendship'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# gem zeitwerk-2.5.1
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
