@@ -33,12 +33,11 @@ class UsersController < ApplicationController
   end
 
   def show_friends
-    # @users = User.all
-    # @current_user = current_user
-    # @myrequest = @current_user.requester_friendships
-    # p ">>>>>>>>>>>>>>>>>>>>>>>>>>>"
-    # p @myrequest
     @users = User.where.not(id: current_user)
+  end
+
+  def show_friend
+    @user = User.find(params[:user_id])
   end
 
   private

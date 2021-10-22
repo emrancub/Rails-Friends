@@ -1,0 +1,23 @@
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+  <h1>Your Friend Description</h1>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>About</th>
+    <th>Gender</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <%# @users.each do |friend| %>
+    <%# if is_friend?(current_user.id, user.id) %>
+      <tr>
+        <td><%= @user.name %></td>
+        <td><%= @user.email %></td>
+        <td><%= @user.about %></td>
+        <td><%= @user.gender %></td>
+    <%# end %>
+  <%# end %>
+  </tbody>
+</table>
