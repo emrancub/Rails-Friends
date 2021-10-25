@@ -16,7 +16,6 @@ class UsersController < ApplicationController
   end
 
   def user_show
-
   end
 
   def user_update
@@ -38,6 +37,10 @@ class UsersController < ApplicationController
 
   def show_friend
     @user = User.find(params[:user_id])
+  end
+
+  def user_search
+    @users = User.where("name LIKE?", "%"+params["q"]+"%")
   end
 
   private

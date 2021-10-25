@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
   get 'home/about'
+
   resources :users, only: [] do
     collection do
       get :security_settings
@@ -17,10 +18,9 @@ Rails.application.routes.draw do
       get :user_show
       post :user_update
 
-      get :show_friend
-    end
-    member do
+      get :user_search
 
+      get :show_friend
     end
   end
 end

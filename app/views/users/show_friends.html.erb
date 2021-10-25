@@ -24,7 +24,7 @@
                <td><%= link_to 'Confirm', accept_friend_request_path(id: user.id), class:"btn btn-warning"%></td>
               <% else %>
                 <td><%= link_to 'Add Friend', friendship_friend_requests_path(user_id: user.id), class:"btn btn-warning"%></td>
-            <% end %>
+              <% end %>
             </td>
           </tr>
         <% end %>

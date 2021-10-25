@@ -45,10 +45,19 @@
           </li>
         <% end %>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+
+      <form class="d-flex" action="/users/user_search">
+        <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
+        <%#= link_to "Search", user_search_users_path, class:'btn btn-outline-success', type:'submit' %>
       </form>
+
+      <%#= form_tag  user_search_users_path, :method => 'get' do %>
+        <%#= text_field_tag :search, params[:search] %>
+        <%#= submit_tag 'Search' %>
+      <%# end %>
+
+
     </div>
   </div>
 </nav>
