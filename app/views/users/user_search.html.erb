@@ -1,22 +1,26 @@
 <h3>Your Results</h3>
-<% if @users.exists? %>
-  <ul>
-    <% @users.each do |user| %>
+<% if user_signed_in? %>
+
+  <% if @users.exists? %>
+    <ul>
+      <% @users.each do |user| %>
         <li>
           <%= link_to user.name, show_friend_users_path(user_id: user.id) %> |
-<!--          <%#= user.name %> |-->
-            <% if is_requested?(current_user.id, user.id) %>
-              <%= link_to 'Requested', user_search_users_path%>
-            <% elsif is_friend?(current_user.id, user.id)%>
-              <%= link_to "Already friend", show_friends_users_path%>
-            <% elsif is_connect?(user.id, current_user.id) %>
-              <%= link_to 'Confirm', accept_friend_request_path(id: user.id)%>
-            <% else %>
-              <%= link_to 'Add Friend', friendship_friend_requests_path(user_id: user.id)%>
-            <% end %>
+          <% if is_requested?(current_user.id, user.id) %>
+            <%= link_to 'Requested', user_search_users_path%>
+          <% elsif is_friend?(current_user.id, user.id)%>
+            <%= link_to "Already friend", show_friends_users_path%>
+          <% elsif is_connect?(user.id, current_user.id) %>
+            <%= link_to 'Confirm', accept_friend_request_path(id: user.id)%>
+          <% else %>
+            <%= link_to 'Add Friend', friendship_friend_requests_path(user_id: user.id)%>
+          <% end %>
         </li>
-    <% end %>
-  </ul>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= render plain: "Not find any Friend" %>
+  <% end %>
 <% else %>
-  <%= render plain: "Not find any Friend" %>
+  <%= render plain: "Please login first!" %>
 <% end %>
